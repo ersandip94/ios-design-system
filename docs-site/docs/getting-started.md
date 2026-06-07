@@ -1,11 +1,10 @@
-# Getting Started
+# Get started
 
-Add CWS to your project and render your first themed component.
+Requirements: **iOS 18+**, **Swift 6 / Xcode 16+**.
 
-## Install
+## 1. Add the package
 
-In Xcode: **File ▸ Add Package Dependencies…** and paste the repository URL. Or add it to your
-`Package.swift`:
+In Xcode: **File ▸ Add Package Dependencies…** and paste the repo URL. Or in `Package.swift`:
 
 ```swift
 dependencies: [
@@ -18,12 +17,12 @@ targets: [
 ]
 ```
 
-A single `import CWSDesignSystem` brings in the components *and* the re-exported
+A single `import CWSDesignSystem` brings in the components **and** the re-exported
 `CWSDesignSystemFoundation` tokens and theming.
 
-## Theme your app
+## 2. Inject a theme
 
-Inject a theme once, near the root of your view tree. Everything below it inherits it:
+Set the theme once, near the root. Everything below inherits it via the environment (`@Entry`):
 
 ```swift
 import CWSDesignSystem
@@ -39,9 +38,9 @@ struct MyApp: App {
 }
 ```
 
-## Use components
+## 3. Use components
 
-Components are stateless — you own the state and pass it in:
+Components are stateless — you own the state and pass it in via `@Binding`:
 
 ```swift
 struct SignInView: View {
@@ -59,7 +58,6 @@ struct SignInView: View {
 }
 ```
 
-## Next steps
-
-- <doc:Theming> — colors, dark mode, and custom brands
-- <doc:APIDesign> — the conventions every component follows
+!!! tip
+    Re-skin the entire system with one line — `.cwsTheme(.brand(Color(red: 0.4, green: 0.2, blue: 0.8)))`.
+    See [Custom brand](theming/custom-brand.md).

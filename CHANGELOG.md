@@ -19,6 +19,9 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Swift Testing unit tests, a snapshot test for `CWSButton`, DocC catalog, gallery app, and a
   custom SwiftLint accessibility rule.
 - DocC: Getting Started + Theming + engineering articles, curated Topics, and a warning-free
-  **combined** documentation build (Foundation + Components) wired to deploy to GitHub Pages.
+  **combined** documentation build (Foundation + Components) for in-Xcode API reference.
+- **MkDocs Material documentation site** (`docs-site/`) — Home, Get started, API design, Versioning,
+  Testing, Architecture, Theming, and 12 component pages — deployed to GitHub Pages via
+  `mkdocs gh-deploy`.
 
-[Unreleased]: https://github.com/ersandip94/codewithsandip-ds-ios/commits/main
+[Unreleased]: https://github.com/ersandip94/ios-design-system/commits/main

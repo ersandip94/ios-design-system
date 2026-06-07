@@ -10,8 +10,12 @@ xcuserdata/
 DerivedData/
 *.xcuserstate
 
-# DocC static site output
+# DocC static site output (local builds)
 /docs/
+
+# MkDocs (docs-site/) local build + virtualenv
+docs-site/site/
+docs-site/.venv/
 
 # macOS
 .DS_Store

@@ -1,0 +1,82 @@
+site_name: CWS Design System (SwiftUI)
+site_description: A SwiftUI design system — components, theming, and design tokens.
+site_url: https://ersandip94.github.io/ios-design-system/
+repo_name: ersandip94/ios-design-system
+repo_url: https://github.com/ersandip94/ios-design-system
+copyright: Copyright &copy; CodeWithSandip
+
+# Reachable via the Home page's "Get started" button, intentionally not a top-level tab.
+not_in_nav: |
+  /getting-started.md
+
+theme:
+  name: material
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: green
+      accent: green
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: green
+      accent: green
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
+  - API design: engineering/api-design.md
+  - Versioning: engineering/versioning.md
+  - Testing: engineering/testing.md
+  - Architecture: architecture.md
+  - Theming:
+      - Colors: theming/colors.md
+      - Dark mode: theming/dark-mode.md
+      - Custom brand: theming/custom-brand.md
+  - Components:
+      - Button: components/button.md
+      - Text field: components/textfield.md
+      - Card: components/card.md
+      - Badge: components/badge.md
+      - Chip: components/chip.md
+      - Toggle: components/toggle.md
+      - Checkbox & Radio: components/selection.md
+      - Slider: components/slider.md
+      - Dialog: components/dialog.md
+      - Sheet: components/sheet.md
+      - Top bar: components/topbar.md
+      - Tab bar: components/tabbar.md

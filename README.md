@@ -5,7 +5,11 @@ accessible components, all prefixed `CWS`. Distributed as a **Swift Package**.
 
 The iOS sibling of the [Android Compose design system](https://github.com/ersandip94/android-design-system) —
 same spirit (publishable, accessible, tested, documented), built with idiomatic **iOS 18 / Swift 6**
-patterns: `@Entry` theming, `ButtonStyle`-based components, Swift Testing, snapshot goldens, DocC.
+patterns: `@Entry` theming, `ButtonStyle`-based components, Swift Testing, snapshot goldens.
+
+### 📖 Documentation site → <https://ersandip94.github.io/ios-design-system/>
+
+Components with usage, theming guides, plus deep-dives on API design, versioning, and testing.
 
 ```swift
 import CWSDesignSystem
@@ -23,7 +27,7 @@ VStack(spacing: CWSSpacing.md) {
 ## Install (Swift Package Manager)
 
 ```swift
-.package(url: "https://github.com/ersandip94/codewithsandip-ds-ios", from: "1.0.0")
+.package(url: "https://github.com/ersandip94/ios-design-system", from: "1.0.0")
 // then add the "CWSDesignSystem" product to your target
 ```
 
@@ -35,8 +39,9 @@ VStack(spacing: CWSSpacing.md) {
 - **Accessible by default** — 44pt tap targets, Dynamic Type font tokens, accessibility labels, a
   custom SwiftLint a11y rule (CI step).
 - **Tested like a product** — Swift Testing unit tests + swift-snapshot-testing goldens (light/dark).
-- **Documented** — a DocC catalog (deployable to GitHub Pages) covering components, theming, and the
-  engineering approach.
+- **Documented** — a [MkDocs Material site](https://ersandip94.github.io/ios-design-system/)
+  (components, theming, API design, versioning, testing) plus a DocC catalog for in-Xcode API
+  reference.
 
 ## Develop
 
@@ -48,6 +53,10 @@ swift package --disable-sandbox generate-documentation \
   --enable-experimental-combined-documentation \
   --target CWSDesignSystemFoundation --target CWSDesignSystem  # build DocC locally
 cd Gallery && xcodegen generate && open CWSGallery.xcodeproj  # showcase app
+
+# Docs website (MkDocs Material) — preview locally:
+cd docs-site && python3 -m venv .venv && .venv/bin/pip install mkdocs-material
+.venv/bin/mkdocs serve   # then open http://127.0.0.1:8000
 ```
 
 > Notes: snapshot tests run on an iOS simulator (`xcodebuild`, not `swift test`); the gallery
