@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.app
+      - name: Build (host smoke)
+        run: swift build
+      - name: Test (unit + snapshot on simulator)
+        run: |
+          xcodebuild test \
+            -scheme CWSDesignSystem \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest'
+
+  lint:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install SwiftLint
+        run: brew install swiftlint
+      - name: Lint (incl. custom a11y rule)
+        run: swiftlint lint --strict
+
+  api-diff:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.app
+      - name: Check for public API breakage vs last tag
+        run: |
+          TAG="$(git describe --tags --abbrev=0 2>/dev/null || true)"
+          if [ -n "$TAG" ]; then
+            swift package diagnose-api-breaking-changes "$TAG"
+          else
+            echo "No release tag yet — skipping API diff."
+          fi

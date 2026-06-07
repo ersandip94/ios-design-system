@@ -1,0 +1,23 @@
+included:
+  - Sources
+  - Tests
+  - Gallery/Sources
+
+disabled_rules:
+  - todo
+
+opt_in_rules:
+  - empty_count
+  - first_where
+  - sorted_first_last
+
+# --- Custom accessibility rule -------------------------------------------------
+# The parallel to the Android `CWSMissingContentDescription` lint: nudge authors
+# to label SF Symbol images. Regex-based (illustrative) — for production, prefer a
+# SwiftSyntax analyzer rule. Decorative images should add `.accessibilityHidden(true)`.
+custom_rules:
+  cws_image_needs_accessibility:
+    name: "Image needs an accessibility decision"
+    regex: 'Image\(systemName:[^\n]*\)(?![\s\S]{0,140}(accessibilityLabel|accessibilityHidden|accessibilityElement))'
+    message: "SF Symbol image: add `.accessibilityLabel(_:)` if meaningful, or `.accessibilityHidden(true)` if decorative."
+    severity: warning
