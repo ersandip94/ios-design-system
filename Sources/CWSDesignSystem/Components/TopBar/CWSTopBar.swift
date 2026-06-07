@@ -80,13 +80,13 @@ private struct CWSTopBarPreview: View {
     var body: some View {
         VStack(spacing: CWSSpacing.xl) {
             CWSTopBar("Destinations")
-            CWSTopBar("Reykjavík", onBack: {}) {
+            CWSTopBar("Reykjavík", onBack: {}, trailing: {
                 Button {} label: {
                     Image(systemName: "heart")
                         .accessibilityLabel(Text("Favorite"))
                 }
                 .buttonStyle(.plain)
-            }
+            })
         }
     }
 }

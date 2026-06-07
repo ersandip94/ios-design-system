@@ -104,7 +104,7 @@ struct ChipGalleryScreen: View {
             VStack(alignment: .leading, spacing: CWSSpacing.md) {
                 CWSChip("Beaches", isSelected: selected) { selected.toggle() }
                 CWSChip("Mountains", systemImage: "mountain.2") {}
-                CWSChip("kotlin", variant: .input, onClose: {}) {}
+                CWSChip("kotlin", variant: .input, onClose: {}, action: {})
                 CWSChip("Add filter", variant: .suggestion, systemImage: "plus") {}
             }
             .padding()
@@ -200,13 +200,13 @@ struct NavigationGalleryScreen: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            CWSTopBar("Reykjavík", onBack: {}) {
+            CWSTopBar("Reykjavík", onBack: {}, trailing: {
                 Button {} label: {
                     Image(systemName: "heart")
                         .accessibilityLabel(Text("Favorite"))
                 }
                 .buttonStyle(.plain)
-            }
+            })
 
             ScrollView {
                 VStack(spacing: CWSSpacing.md) {
@@ -223,7 +223,7 @@ struct NavigationGalleryScreen: View {
                 .init(id: 0, title: "Home", systemImage: "house"),
                 .init(id: 1, title: "Explore", systemImage: "map"),
                 .init(id: 2, title: "Saved", systemImage: "bookmark"),
-                .init(id: 3, title: "Profile", systemImage: "person"),
+                .init(id: 3, title: "Profile", systemImage: "person")
             ])
         }
         .navigationBarHidden(true)

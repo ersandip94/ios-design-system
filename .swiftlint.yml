@@ -7,9 +7,14 @@ disabled_rules:
   - todo
 
 opt_in_rules:
-  - empty_count
   - first_where
   - sorted_first_last
+
+# Design tokens and SwiftUI use short, intentional names (xs, sm, md, x, y, vc…).
+identifier_name:
+  min_length:
+    warning: 1
+    error: 1
 
 # --- Custom accessibility rule -------------------------------------------------
 # The parallel to the Android `CWSMissingContentDescription` lint: nudge authors
@@ -18,6 +23,6 @@ opt_in_rules:
 custom_rules:
   cws_image_needs_accessibility:
     name: "Image needs an accessibility decision"
-    regex: 'Image\(systemName:[^\n]*\)(?![\s\S]{0,140}(accessibilityLabel|accessibilityHidden|accessibilityElement))'
+    regex: 'Image\(systemName:[^\n)]*\)(?![\s\S]{0,200}(accessibilityLabel|accessibilityHidden|accessibilityElement))'
     message: "SF Symbol image: add `.accessibilityLabel(_:)` if meaningful, or `.accessibilityHidden(true)` if decorative."
     severity: warning

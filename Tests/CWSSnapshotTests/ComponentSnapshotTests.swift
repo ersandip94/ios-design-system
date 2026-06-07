@@ -82,9 +82,9 @@ struct ComponentSnapshotTests {
     func topBar() {
         for theme in [CWSTheme.light, .dark] {
             snapshot(theme == .dark ? "dark" : "light", theme) {
-                CWSTopBar("Reykjavík", onBack: {}) {
+                CWSTopBar("Reykjavík", onBack: {}, trailing: {
                     Image(systemName: "heart").accessibilityLabel(Text("Favorite"))
-                }
+                })
             }
         }
     }
@@ -96,7 +96,7 @@ struct ComponentSnapshotTests {
                 CWSTabBar(selection: .constant(0), items: [
                     .init(id: 0, title: "Home", systemImage: "house"),
                     .init(id: 1, title: "Explore", systemImage: "map"),
-                    .init(id: 2, title: "Saved", systemImage: "bookmark"),
+                    .init(id: 2, title: "Saved", systemImage: "bookmark")
                 ])
             }
         }

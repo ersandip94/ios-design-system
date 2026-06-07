@@ -84,7 +84,7 @@ private struct CWSTabBarPreview: View {
                 .init(id: 0, title: "Home", systemImage: "house"),
                 .init(id: 1, title: "Explore", systemImage: "map"),
                 .init(id: 2, title: "Saved", systemImage: "bookmark"),
-                .init(id: 3, title: "Profile", systemImage: "person"),
+                .init(id: 3, title: "Profile", systemImage: "person")
             ])
         }
     }

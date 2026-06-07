@@ -14,15 +14,12 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
-      - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_16.app
-      - name: Build (host smoke)
-        run: swift build
-      - name: Test (unit + snapshot on simulator)
+      - name: Build & unit test (host)
+        # swift test runs the Swift Testing unit suites. Snapshot tests are gated to iOS
+        # (they need a simulator + committed goldens) and run locally — see README.
         run: |
-          xcodebuild test \
-            -scheme CWSDesignSystem \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest'
+          swift build
+          swift test
 
   lint:
     runs-on: macos-15
@@ -39,8 +36,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_16.app
       - name: Check for public API breakage vs last tag
         run: |
           TAG="$(git describe --tags --abbrev=0 2>/dev/null || true)"

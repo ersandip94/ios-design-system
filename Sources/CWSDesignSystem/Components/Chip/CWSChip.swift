@@ -98,7 +98,7 @@ private struct CWSChipPreview: View {
                 CWSChip("Mountains") {}
                 CWSChip("Cities", systemImage: "building.2") {}
             }
-            CWSChip("kotlin", variant: .input, onClose: {}) {}
+            CWSChip("kotlin", variant: .input, onClose: {}, action: {})
             CWSChip("Add filter", variant: .suggestion, systemImage: "plus") {}
         }
         .padding()
